@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DataStructure</title>
+		<script type="text/javascript" src="DataStructure.js"></script>
+		<script type="text/javascript" src="lib/Require.js"></script>
+		<script type="text/javascript">
+			//IE 등 console객체가 존재하지 않는 경우를 대비하여 작성
+			if(console === undefined){
+				console = { log : {} };
+			}
+			
+			dataStructure = new DataStructure();
+			
+			function clearConsole(){
+				document.getElementById("console").innerHTML = "";
+			}
+			
+			window.onload = function(){
+				//console.log 를 사용하면 화면에 뿌려지도록 변경
+				console = {
+					log : function(psStr){
+						if(  psStr === null
+								|| psStr === undefined){
+						}else if(typeof psStr === "object"){
+							document.getElementById("console").innerHTML = document.getElementById("console").innerHTML  + "<br /><b>" + psStr.toString() + "</b>";
+						}else{
+							document.getElementById("console").innerHTML = document.getElementById("console").innerHTML  + "<br /><b>" + psStr + "</b>";
+						}
+					}
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<form id="typeselector">
+			
+		
+     	
+			<FIELDSET>
+      			<legend>linear</legend>
+					<div>
+						<input type="radio" name="type" value="Stack">Stack push and pop
+					</div>
+					<div>
+						<input type="radio" name="type" value="Queue">Queue put and get
+					</div>
+					<div>
+						<input type="radio" name="type" value="LinkedList">LinkedList add and move
+					</div>
+					<div>
+						<input type="radio" name="type" value="DoubleLinkedList">DoubleLinkedList add and move
+					</div>
+					<div>
+						<input type="radio" name="type" value="CircleLinkedList">CircleLinkedList add and move
+					</div>
+					<div>
+						<input type="radio" name="type" value="Tree">Tree add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="BinaryTree">BinaryTree add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="BinarySearchTree">BinarySearchTree add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="Heap">Min/MaxHeap add and travel
+					</div>
+					
+					<div>
+						<input onclick="javascript: dataStructure.execute(this.form);" type="button" name="execute" value="Execute">
+						<input onclick="javascript: clearConsole();" type="button" value="Clear Console">
+					</div>
+     		</FIELDSET>
+			<FIELDSET>
+      			<legend>nonelinear</legend>
+					<div>
+						<input type="radio" name="type" value="Stack">Stack push and pop
+					</div>
+					<div>
+						<input type="radio" name="type" value="Queue">Queue put and get
+					</div>
+					<div>
+						<input type="radio" name="type" value="LinkedList">LinkedList add and move
+					</div>
+					<div>
+						<input type="radio" name="type" value="DoubleLinkedList">DoubleLinkedList add and move
+					</div>
+					<div>
+						<input type="radio" name="type" value="CircleLinkedList">CircleLinkedList add and move
+					</div>
+					<div>
+						<input type="radio" name="type" value="Tree">Tree add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="BinaryTree">BinaryTree add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="BinarySearchTree">BinarySearchTree add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="MinHeap">MinHeap add and travel
+					</div>
+					<div>
+						<input type="radio" name="type" value="MaxHeap">MaxHeap add and travel
+					</div>
+					
+					<div>
+						<input onclick="javascript: dataStructure.execute(this.form);" type="button" name="execute" value="Execute">
+						<input onclick="javascript: clearConsole();" type="button" value="Clear Console">
+					</div>
+     		</FIELDSET>
+			console
+			<div id="console">
+			</div>
+		</form>
+	</body>
+</html>
