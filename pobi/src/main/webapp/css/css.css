@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+@charset "utf-8";
+
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0;}
+body,input,textarea,select,button,table{font-family:tahoma,'굴림',Gulim,Applegothic,sans-serif;font-size:13px;}
+img,fieldset{border:0;}
+ul,ol{list-style:none;}
+em,address{font-style:normal;}
+a{text-decoration:none; color: #000000; }
+a:hover,a:active,a:focus{text-decoration:none;}
+
+/* layout */
+#container{margin: 0 auto; overflow:hidden; height:768px; width: 1280px;}
+
+.leftmenu {width: 280px; height:624px; float: left;}
+.leftmenu li {padding-bottom:10px;}
+.leftmenu li a {height:28px;margin:7px 0 7px 13px; }
+
+.content{ overflow: hidden; height: 768px; width: 1000px;}
+.content .loadplace{display:none; overflow: auto; height:100%; width: 100%; margin:0;padding:0; border: 0;}
