@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FreeBoard">
+	<typeAlias alias="FreeBoard" type="org.codekin.pobi.model.FreeBoard" />
+
+	<select id="selectFreeBoardList" resultClass="freeBoard">
+	SELECT POST_ID
+		 , SUBJECT
+		 , CONTENT
+		 , REPLY_SEQ
+		 , VIEW_COUNT
+		 , WRITER_ID
+		 , WRITE_DT
+	  FROM BOARD
+	</select>
+</sqlMap>
