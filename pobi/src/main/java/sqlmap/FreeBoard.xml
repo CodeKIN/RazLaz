@@ -8,10 +8,31 @@
 	SELECT POST_ID
 		 , SUBJECT
 		 , CONTENT
-		 , REPLY_SEQ
+		 , '1' AS REPLY_SEQ
+		 , LIKE_COUNT
 		 , VIEW_COUNT
 		 , WRITER_ID
 		 , WRITE_DT
 	  FROM BOARD
+	  ORDER BY POST_ID DESC
 	</select>
+	
+	<insert id="saveFreeBoard">
+	INSERT INTO BOARD(
+		   SUBJECT
+	     , CONTENT
+		 , LIKE_COUNT
+	     , VIEW_COUNT
+	     , WRITER_ID
+	     , WRITE_DT
+	     ) VALUES (
+	       #subject#
+		 , #content#
+		 , 0
+		 , 0
+		 , #writer_id#
+		 , NOW()
+	     )
+	</insert>
+	
 </sqlMap>

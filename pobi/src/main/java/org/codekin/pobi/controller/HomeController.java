@@ -22,18 +22,42 @@ public class HomeController {
 	private CommunityService communityService;
 	
 	
-	
+
 	/**
-	 * community
+	 * select freeboard list
 	 * @param locale
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/freeboard", method = RequestMethod.GET)
-	public String freeboard(Locale locale, Model model) {
+	@RequestMapping(value = "/community/freeboard/list", method = RequestMethod.GET)
+	public String freeboardList(Locale locale, Model model) {
 		model.addAttribute("freeboard", communityService.selectFreeBoardList());
 		
-		return "freeboard";
+		return "community/freeboard/list";
+	}
+	
+	/**
+	 * forward at the write page
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/community/freeboard/write", method = RequestMethod.GET)
+	public String freeboardWrite(Locale locale, Model model) {
+		return "community/freeboard/write";
+	}
+
+	/**
+	 * forward at the write page
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/community/freeboard/save", method = RequestMethod.POST)
+	public String freeboardSave(Locale locale, Model model) {
+		communityService.saveFreeBoardList();
+		
+		return "redirect:/community/freeboard/list.do";
 	}
 
 	

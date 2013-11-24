@@ -22,4 +22,19 @@ public class CommunityService extends CommonService{
 		
 		return communityDao.selectFreeBoardList(param);
 	}
+
+	public void saveFreeBoardList() {
+		HttpServletRequest request = this.getRequest();
+		String[] keys = {"subject", "content"};
+		
+		Map<String, Object> param = this.getParamMap(keys, request);
+		
+		param.put("writer_id", request.getSession(false).getAttribute("USER_ID"));
+		
+		/*
+		 * prototype
+		 */
+		param.put("writer_id", "CodeKIN");
+		communityDao.saveFreeBoard(param);
+	}
 }

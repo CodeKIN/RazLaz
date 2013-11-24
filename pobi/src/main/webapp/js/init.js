@@ -5,7 +5,11 @@ jQuery(function() {
 		});
 
 		$("a[href='#freeboard']").click(function(){
-			window.location.href = "/freeboard.do";
+			var voSubmitsion = Submission.createSubmission();
+			voSubmitsion.attr("method", "get");
+			voSubmitsion.attr("action", "/community/freeboard/list.do");
+		
+			voSubmitsion.submit();
 		});
 	})(jQuery);
 });

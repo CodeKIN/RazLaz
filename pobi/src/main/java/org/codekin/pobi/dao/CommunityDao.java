@@ -16,4 +16,9 @@ public class CommunityDao extends SqlMapClientDaoSupport {
 		// TODO Auto-generated method stub
 		return (List<FreeBoard>)getSqlMapClientTemplate().queryForList(NAMESPACE + "selectFreeBoardList", param);
 	}
+
+	public void saveFreeBoard(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert(NAMESPACE + "saveFreeBoard", param);
+	}
 }

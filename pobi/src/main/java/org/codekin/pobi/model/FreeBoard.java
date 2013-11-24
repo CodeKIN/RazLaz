@@ -6,7 +6,7 @@ public class FreeBoard {
 	private int POST_ID;
 	private String SUBJECT;
 	private String CONTENT;
-	private int REPLY_SEQ;
+	private int LIKE_COUNT;
 	private int VIEW_COUNT;
 	private String WRITER_ID;
 	private Date WRITE_DT;
@@ -29,12 +29,6 @@ public class FreeBoard {
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
 	}
-	public int getREPLY_SEQ() {
-		return REPLY_SEQ;
-	}
-	public void setREPLY_SEQ(int rEPLY_SEQ) {
-		REPLY_SEQ = rEPLY_SEQ;
-	}
 	public int getVIEW_COUNT() {
 		return VIEW_COUNT;
 	}
@@ -52,5 +46,11 @@ public class FreeBoard {
 	}
 	public void setWRITE_DT(Date wRITE_DT) {
 		WRITE_DT = wRITE_DT;
+	}
+	public int getLIKE_COUNT() {
+		return LIKE_COUNT;
+	}
+	public void setLIKE_COUNT(int lIKE_COUNT) {
+		LIKE_COUNT = lIKE_COUNT;
 	}
 }

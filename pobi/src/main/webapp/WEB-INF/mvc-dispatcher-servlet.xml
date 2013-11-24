@@ -38,8 +38,7 @@
 	<bean id="commonHandlerInterceptor" class="org.codekin.pobi.interceptor.CommonHandlerInterceptor" />
 
 	<!-- 인터셉터, 컨트롤러, URL 매핑 -->
-	<bean id="urlMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="interceptors">
 			<list>
 				<ref bean="commonHandlerInterceptor" />
@@ -47,7 +46,7 @@
 		</property>
 		<property name="mappings">
 			<props>
-				<prop key="/*.do">homeController</prop>
+				<prop key="/*">homeController</prop>
 			</props>
 		</property>
 	</bean>

@@ -17,3 +17,14 @@ Common = {
 			}
 		}
 };
+
+Submission = {
+	createSubmission : function(){
+		var submission = $('<form>', {
+			id     : "clientRequest",
+			method : "post"
+		});
+		
+		return submission;
+	}
+};
