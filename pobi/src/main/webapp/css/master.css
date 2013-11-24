@@ -18,6 +18,29 @@ thead, tbody{
 	font-size: 12px;
 }
 
+thead tr th, 
+tbody tr td{
+	vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222222;
+  font-family: 'PT Sans', Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-weight: bold;
+}
+ 
+h1{
+  font-size: 2.142em;
+  line-height: 1.1333em;
+  margin-bottom: .2666em;
+}
+
+
 /* =Header
 -----------------------------------------------------------------------------*/
 

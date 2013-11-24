@@ -17,7 +17,18 @@
 <script src="<c:url value="/js/jquery-1.10.2.js"></c:url>"></script>
 <script src="<c:url value="/js/kube.buttons.js"></c:url>"></script>
 <script src="<c:url value="/js/common.js"></c:url>"></script>
-<script src="<c:url value="/js/freeboard/row.js"></c:url>"></script>
+<script src="<c:url value="/js/freeboard/freeboard.js"></c:url>"></script>
+<style>
+table thead tr th,
+table tbody tr td{
+	color: black;
+	font-weight: normal;
+}
+table thead tr th:HOVER,
+table tbody tr td:HOVER{
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -37,11 +48,13 @@
 				</thead>
 				<c:forEach var="row" items="${freeboard}" varStatus="c">
 					<c:choose>
-						<c:when test="${c.index % 2 == 0}">
+						<c:when test="${c.count % 2 eq 0}">
 							<thead>
 								<tr>
 									<th>${row.POST_ID}</th>
-									<th>${row.SUBJECT}</th>
+									<th>
+										<a href="/community/freeboard/postview.do?post_id=${row.POST_ID}">${row.SUBJECT}</a>
+									</th>
 									<th>${row.WRITER_ID}</th>
 									<th>${row.LIKE_COUNT}</th>
 									<th>${row.VIEW_COUNT}</th>
@@ -52,7 +65,9 @@
 							<tbody>
 								<tr>
 									<td>${row.POST_ID}</td>
-									<td>${row.SUBJECT}</td>
+									<td>
+										<a href="/community/freeboard/postview.do?post_id=${row.POST_ID}">${row.SUBJECT}</a>
+									</td>
 									<td>${row.WRITER_ID}</td>
 									<td>${row.LIKE_COUNT}</td>
 									<td>${row.VIEW_COUNT}</td>
@@ -62,15 +77,28 @@
 					</c:choose>
 				</c:forEach>
 			</table>
-			<div id="units-container" align="right">
-				<a href="#community" class="label-badge label-green label-small">◀</a>
-				<a href="#community" class="label-badge label-green label-small">1</a>
-				<a href="#community" class="label-badge label-green label-small">2</a>
-				<a href="#community" class="label-badge label-green label-small">3</a>
-				<a href="#community" class="label-badge label-green label-small">4</a>
-				<a href="#community" class="label-badge label-green label-small">5</a>
-				<a href="#community" class="label-badge label-green label-small">▶</a>
 
+			<div id="units-container" align="right">
+				<c:if test="${paginginfo.startpagenum - paginginfo.pagegrp gt 0}">
+					<a href="/community/freeboard/list.do?client_page=${(paginginfo.startpagenum - 1)}" class="label-badge label-green label-small">[prev]</a>
+				</c:if>
+					
+				<c:forEach varStatus="c" begin="${paginginfo.startpagenum}" end="${paginginfo.endpagenum}" step="1">
+					<c:if test="${c.count le paginginfo.totpage}">
+						<c:choose>
+							<c:when test="${c.count ne paginginfo.client_page}">
+								<a href="/community/freeboard/list.do?client_page=${c.count}" class="label-badge label-green label-small">${c.count}</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/community/freeboard/list.do?client_page=${c.count}" class="label-badge label-green label-small"><b>${c.count}</b></a>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${paginginfo.endpagenum lt paginginfo.totpage}">
+					<a href="/community/freeboard/list.do?client_page=${(paginginfo.endpagenum)}" class="label-badge label-green label-small">[next]</a>
+				</c:if>
 				<a href="#write" class="label label-blue" style="font-size: 15px;">글쓰기</a>
 			</div>
 		</div>

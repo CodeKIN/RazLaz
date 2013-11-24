@@ -238,7 +238,7 @@ public class CommonService {
 				.getAttribute(
 						SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
 	}
-	
+
 	protected MultipartHttpServletRequest getMultipartHttpServletRequest(HttpServletRequest request){
 		return (MultipartHttpServletRequest) request;
 	}

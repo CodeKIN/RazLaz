@@ -2,9 +2,24 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="FreeBoard">
-	<typeAlias alias="FreeBoard" type="org.codekin.pobi.model.FreeBoard" />
+	<typeAlias alias="freeBoard" type="org.codekin.pobi.model.FreeBoard" />
 
-	<select id="selectFreeBoardList" resultClass="freeBoard">
+	<update id="updatePost">
+	UPDATE BOARD
+	   SET SUBJECT = #subject#
+	     , CONTENT = #content#
+	 WHERE 1 = 1
+	   AND POST_ID = #post_id#
+	</update>
+
+	<select id="selectWriterId" resultClass="java.lang.String">
+	SELECT WRITER_ID
+	  FROM BOARD
+	 WHERE 1 = 1
+	   AND POST_ID = #post_id#
+	</select>
+	
+	<select id="selectPostDetail" resultClass="freeBoard">
 	SELECT POST_ID
 		 , SUBJECT
 		 , CONTENT
@@ -14,7 +29,29 @@
 		 , WRITER_ID
 		 , WRITE_DT
 	  FROM BOARD
+	 WHERE 1 = 1
+	   AND POST_ID = #post_id#
+	</select>
+	
+	<select id="selectFreeBoardList" resultClass="freeBoard">
+	SELECT POST_ID
+		 , CASE 
+		     WHEN LENGTH(SUBJECT) > 40
+		     THEN CONCAT(SUBSTR(SUBJECT, 1, 30), '...') 
+		     ELSE SUBJECT
+		   END AS SUBJECT
+		 , '1' AS REPLY_SEQ
+		 , LIKE_COUNT
+		 , VIEW_COUNT
+		 , WRITER_ID
+	  FROM BOARD
 	  ORDER BY POST_ID DESC
+	  LIMIT #startrow#, #endrow#
+	</select>
+	
+	<select id="selectTotalPostCount" resultClass="java.lang.String">
+	SELECT COUNT(1)
+	  FROM BOARD
 	</select>
 	
 	<insert id="saveFreeBoard">

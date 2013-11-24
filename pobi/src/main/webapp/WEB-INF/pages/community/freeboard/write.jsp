@@ -25,20 +25,39 @@
 	<div class="wrapper">
 		<div id="units-container">
 			<form method="post">
-				<div align="left">
-					<a href="#cancle" class="label label-red" style="font-size: 12px;">취소</a>
-					<a href="#save" class="label label-red" style="font-size: 12px;">올리기</a>
-				</div>
-				
-				<div style="width: 100%;">
-					제목
-					<input type="text" name="subject" id="subject" style="width: 100%;"/>
-				</div>
-				
-				<div>
-					<textarea name="content" id="content" rows="10" cols="100">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
-				</div>			
-				
+				<c:choose>
+					<c:when test="${postdetail ne null}">
+						<input type="hidden" id="prefix" value="update" />
+						<input type="hidden" name="post_id" value="${postdetail.POST_ID}"
+						<div align="left">
+							<a href="#cancle" class="label label-red" style="font-size: 12px;">취소</a>
+							<a href="#save" class="label label-red" style="font-size: 12px;">저장</a>
+						</div>
+						<div style="width: 100%;">
+							제목
+							<input type="text" name="subject" id="subject" value="${postdetail.SUBJECT}" style="width: 100%;"/>
+						</div>
+						
+						<div>
+							<textarea name="content" id="content" rows="10" cols="100">${postdetail.CONTENT}</textarea>
+						</div>	
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" id="prefix" value="write" />
+						<div align="left">
+							<a href="#cancle" class="label label-red" style="font-size: 12px;">취소</a>
+							<a href="#save" class="label label-red" style="font-size: 12px;">저장</a>
+						</div>
+						<div style="width: 100%;">
+							제목
+							<input type="text" name="subject" id="subject" style="width: 100%;"/>
+						</div>
+						
+						<div>
+							<textarea name="content" id="content" rows="10" cols="100"></textarea>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</form>
 		</div>
 	</div>

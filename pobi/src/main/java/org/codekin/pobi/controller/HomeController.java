@@ -3,6 +3,7 @@ package org.codekin.pobi.controller;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 import org.codekin.pobi.service.CommunityService;
 import org.slf4j.Logger;
@@ -31,7 +32,9 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/community/freeboard/list", method = RequestMethod.GET)
 	public String freeboardList(Locale locale, Model model) {
-		model.addAttribute("freeboard", communityService.selectFreeBoardList());
+		Map<String, Object> boardInfo = communityService.selectFreeBoardList();
+		model.addAttribute("freeboard", boardInfo.get("boardList"));
+		model.addAttribute("paginginfo", boardInfo.get("pagingInfo"));
 		
 		return "community/freeboard/list";
 	}
@@ -56,6 +59,45 @@ public class HomeController {
 	@RequestMapping(value = "/community/freeboard/save", method = RequestMethod.POST)
 	public String freeboardSave(Locale locale, Model model) {
 		communityService.saveFreeBoardList();
+		
+		return "redirect:/community/freeboard/list.do";
+	}
+
+	/**
+	 * view post
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/community/freeboard/postview", method = RequestMethod.GET)
+	public String freeboardPostView(Locale locale, Model model) {
+		model.addAttribute("postdetail", communityService.selectPostDetail());
+		
+		return "community/freeboard/viewer";
+	}
+
+	/**
+	 * update post
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/community/freeboard/updateView", method = RequestMethod.GET)
+	public String freeboardUpdateView(Locale locale, Model model) {
+		model.addAttribute("postdetail", communityService.selectPostDetail());
+		
+		return "community/freeboard/write";
+	}
+	
+	/**
+	 * update post
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/community/freeboard/update", method = RequestMethod.POST)
+	public String freeboardPostUpdate(Locale locale, Model model) {
+		communityService.updatePost();
 		
 		return "redirect:/community/freeboard/list.do";
 	}

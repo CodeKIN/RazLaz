@@ -46,7 +46,7 @@
 		</property>
 		<property name="mappings">
 			<props>
-				<prop key="/*">homeController</prop>
+				<prop key="*">homeController</prop>
 			</props>
 		</property>
 	</bean>

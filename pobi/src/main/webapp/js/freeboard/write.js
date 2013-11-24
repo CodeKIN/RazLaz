@@ -63,8 +63,8 @@ jQuery(function() {
 			voSubmitsion.submit();
 		});
 		
-		$("a[href='#save']").click(this, function(elClickedObj){
-			var targetform = this.parentElement.parentElement;
+		$("a[href='#save']").click(function(elClickedObj){
+			var targetform = document.getElementsByTagName("form")[0];
 			
 		    // editor's text value copy at textarea
 		    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
@@ -72,7 +72,11 @@ jQuery(function() {
 		    // value validation is 
 		    // document.getElementById("content").value
 		    try {
-		    	targetform.action = "/community/freeboard/save.do";
+		    	if(targetform.prefix.value === "update"){
+		    		targetform.action = "/community/freeboard/update.do";
+		    	}else{
+		    		targetform.action = "/community/freeboard/save.do";
+		    	}
 		    	targetform.submit();
 		    } catch(e) {}
 		});
