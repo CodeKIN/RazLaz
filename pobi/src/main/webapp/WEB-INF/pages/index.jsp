@@ -41,9 +41,5 @@
 		</figure>
 
 	</div>
-
-
-
-
 </body>
 </html>

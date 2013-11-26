@@ -23,17 +23,23 @@
 </head>
 <body>
 	<div class="wrapper">
+		<!-- Header -->
+		<%@include file="/WEB-INF/pages/include/header.html" %>
+		<!-- Header -->
+		
 		<div id="units-container" align="right">
-			<a href="#cancle" class="label label-blue" style="font-size: 15px;"">취소</a>
-			<a href="#save" class="label label-blue" style="font-size: 15px;"">저장</a>
-			<form method="post" class="forms-inline">
+			<div id="units-container" align="right">
+				<a href="#cancle" class="label label-blue" style="font-size: 15px;"">취소</a>
+				<a href="#save" class="label label-blue" style="font-size: 15px;"">저장</a>
+			</div>
+			<form method="post" class="forms" style="text-align: left;">
 				<c:choose>
 					<c:when test="${postdetail ne null}">
 						<input type="hidden" id="prefix" value="update" />
 						<input type="hidden" name="post_id" value="${postdetail.POST_ID}"
-						<div style="width: 100%;">
+						<div>
 							제목
-							<input type="text" name="subject" id="subject" value="${postdetail.SUBJECT}" style="width: 100%;" />
+							<input type="text" name="subject" id="subject" value="${postdetail.SUBJECT}" />
 						</div>
 						
 						<div>
@@ -42,10 +48,6 @@
 					</c:when>
 					<c:otherwise>
 						<input type="hidden" id="prefix" value="write" />
-						<div id="units-container" align="right">
-							<a href="#cancle" class="label label-blue" style="font-size: 15px;"">취소</a>
-							<a href="#save" class="label label-blue" style="font-size: 15px;"">저장</a>
-						</div>
 						<div style="width: 100%;">
 							제목
 							<input type="text" name="subject" id="subject" style="width: 100%;"/>

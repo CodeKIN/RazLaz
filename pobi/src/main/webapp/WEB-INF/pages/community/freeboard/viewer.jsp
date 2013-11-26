@@ -31,6 +31,10 @@ table.width-100.table-simple.table-stroked thead tr th{
 <body>
 	<div class="wrapper">
 		<div id="units-container">
+			<!-- Header -->
+			<%@include file="/WEB-INF/pages/include/header.html" %>
+			<!-- Header -->
+	
 			<div id="units-container" align="right">
 				<a href="#list" class="label label-blue" style="font-size: 15px;">목록</a>
 				<a href="/community/freeboard/updatePost.do?post_id=${postdetail.POST_ID}" class="label label-blue" style="font-size: 15px;">수정</a>

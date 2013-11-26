@@ -41,6 +41,10 @@ table tbody tr:HOVER{
 <body>
 	<div class="wrapper">
 		<div id="units-container">
+			<!-- Header -->
+			<%@include file="/WEB-INF/pages/include/header.html" %>
+			<!-- Header -->
+			
 			<div id="units-container" align="right">
 				<a href="#write" class="label label-blue" style="font-size: 15px;">글쓰기</a>
 			</div>

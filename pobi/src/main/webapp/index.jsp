@@ -21,17 +21,9 @@
 </head>
 <body style>
 	<div class="wrapper">
-	<header id="header" class="group">
-		<h1>Puse &amp; Community <3</h1>
-		<nav class="nav-g">
-			<ul>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Contact Us</a></li>
-			</ul>
-		</nav>
-	</header>
+	<!-- Header -->
+	<%@include file="/WEB-INF/pages/include/header.html" %>
+	<!-- Header -->
 	
 	<div id="promo">
 		<img src="/images/love.jpg" alt="demopromo" height="300">

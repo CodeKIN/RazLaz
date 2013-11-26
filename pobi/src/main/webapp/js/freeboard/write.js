@@ -28,15 +28,20 @@ jQuery(function() {
 					iframedoc.getElementById("smart_editor2").style.width = "99%";
 					iframedoc.getElementById("smart_editor2_content").style.width = "99%";
 					
+					$("#subject").css("width", (iframedoc.getElementById("smart_editor2_content").clientWidth - 3) + "px");
+					
 					/* **************************************************
-					 * responsive iframe                                *
+					 * responsive iframe, input                         *
 					 * **************************************************/
 					$(window).resize(function(){
 						var iframeobj = document.getElementsByTagName("iframe")[0];
-						iframeobj.style.height = iframedoc.body.offsetHeight + "px";
+						var heightPx  = iframedoc.body.offsetHeight + "px";
+						
+						iframeobj.style.height = heightPx;
+						$("#subject").css("width", (iframedoc.getElementById("smart_editor2_content").clientWidth - 3) + "px");
 					});
 					/* **************************************************
-					 * responsive iframe                                *
+					 * responsive iframe, input                         *
 					 * **************************************************/
 					
 					window.clearInterval(intervalId);
@@ -53,7 +58,12 @@ jQuery(function() {
 		 * bind Elements                                    *
 		 * **************************************************/
 		
-		$("#subject").keydown(function(){return false;});
+		$("#subject").keydown(this, function(event){
+			if(event.keyCode === 13){
+				return false;
+			}
+			return true;
+		});
 		
 		$("a[href='#cancle']").click(function(){
 			var voSubmitsion = Submission.createSubmission();
