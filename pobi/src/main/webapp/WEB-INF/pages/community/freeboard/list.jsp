@@ -19,14 +19,22 @@
 <script src="<c:url value="/js/common.js"></c:url>"></script>
 <script src="<c:url value="/js/freeboard/freeboard.js"></c:url>"></script>
 <style>
+table thead.title tr th{
+	color: black;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;
+}
+
 table thead tr th,
 table tbody tr td{
 	color: black;
 	font-weight: normal;
+	vertical-align: middle;
 }
-table thead tr th:HOVER,
-table tbody tr td:HOVER{
-	font-weight: bold;
+table thead tr:HOVER,
+table tbody tr:HOVER{
+	background-color: #ffdab9;
 }
 </style>
 </head>
@@ -37,18 +45,31 @@ table tbody tr td:HOVER{
 				<a href="#write" class="label label-blue" style="font-size: 15px;">글쓰기</a>
 			</div>
 			<table class="width-100 table-striped">
-				<thead>
+				<thead class="title">
 					<tr>
-						<th width="10%" style="text-align: center;">번호</th>
-						<th width="70%" style="text-align: center;">제목</th>
-						<th width="10%" style="text-align: center;">글쓴이</th>
-						<th width="5%" style="text-align: center;">추천</th>
-						<th width="5%" style="text-align: center;">조회</th>
+						<th width="10%">번호</th>
+						<th width="70%">제목</th>
+						<th width="10%">글쓴이</th>
+						<th width="5%">추천</th>
+						<th width="5%">조회</th>
 					</tr>
 				</thead>
 				<c:forEach var="row" items="${freeboard}" varStatus="c">
 					<c:choose>
 						<c:when test="${c.count % 2 eq 0}">
+							<thead>
+								<tr>
+									<td>${row.POST_ID}</td>
+									<td>
+										<a href="/community/freeboard/postview.do?post_id=${row.POST_ID}">${row.SUBJECT}</a>
+									</td>
+									<td>${row.WRITER_ID}</td>
+									<td>${row.LIKE_COUNT}</td>
+									<td>${row.VIEW_COUNT}</td>
+								</tr>
+							</thead>
+						</c:when>
+						<c:otherwise>
 							<thead>
 								<tr>
 									<th>${row.POST_ID}</th>
@@ -60,19 +81,6 @@ table tbody tr td:HOVER{
 									<th>${row.VIEW_COUNT}</th>
 								</tr>
 							</thead>
-						</c:when>
-						<c:otherwise>
-							<tbody>
-								<tr>
-									<td>${row.POST_ID}</td>
-									<td>
-										<a href="/community/freeboard/postview.do?post_id=${row.POST_ID}">${row.SUBJECT}</a>
-									</td>
-									<td>${row.WRITER_ID}</td>
-									<td>${row.LIKE_COUNT}</td>
-									<td>${row.VIEW_COUNT}</td>
-								</tr>
-							</tbody>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -80,24 +88,24 @@ table tbody tr td:HOVER{
 
 			<div id="units-container" align="right">
 				<c:if test="${paginginfo.startpagenum - paginginfo.pagegrp gt 0}">
-					<a href="/community/freeboard/list.do?client_page=${(paginginfo.startpagenum - 1)}" class="label-badge label-green label-small">[prev]</a>
+					<a href="/community/freeboard/list.do?client_page=${(paginginfo.startpagenum - 1)}" class="label">[prev]</a>
 				</c:if>
-					
+
 				<c:forEach varStatus="c" begin="${paginginfo.startpagenum}" end="${paginginfo.endpagenum}" step="1">
-					<c:if test="${c.count le paginginfo.totpage}">
+					<c:if test="${c.index le paginginfo.totpage}">
 						<c:choose>
-							<c:when test="${c.count ne paginginfo.client_page}">
-								<a href="/community/freeboard/list.do?client_page=${c.count}" class="label-badge label-green label-small">${c.count}</a>
+							<c:when test="${c.index ne paginginfo.client_page}">
+								<a href="/community/freeboard/list.do?client_page=${c.index}" class="label">${c.index}</a>
 							</c:when>
 							<c:otherwise>
-								<a href="/community/freeboard/list.do?client_page=${c.count}" class="label-badge label-green label-small"><b>${c.count}</b></a>
+								<a href="/community/freeboard/list.do?client_page=${c.index}" class="label"><b>${c.index}</b></a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${paginginfo.endpagenum lt paginginfo.totpage}">
-					<a href="/community/freeboard/list.do?client_page=${(paginginfo.endpagenum)}" class="label-badge label-green label-small">[next]</a>
+					<a href="/community/freeboard/list.do?client_page=${(paginginfo.endpagenum) + 1}" class="label">[next]</a>
 				</c:if>
 				<a href="#write" class="label label-blue" style="font-size: 15px;">글쓰기</a>
 			</div>

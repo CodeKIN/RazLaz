@@ -163,7 +163,6 @@ td {
 }
 thead th,
 thead td {
-  font-weight: bold;
   vertical-align: bottom;
 }
 /* Image inside */
@@ -237,7 +236,6 @@ body {
 }
 a {
   color: #336699;
-  text-decoration: none;
 }
 a:focus,
 a:hover {
@@ -557,7 +555,7 @@ table.table-striped tbody tr:nth-child(odd) td {
 }
 table.table-hovered tbody tr:hover td,
 table.table-hovered thead tr:hover th {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
 }
 /* Responsive Tables */
 .table-container {

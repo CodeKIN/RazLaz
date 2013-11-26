@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.codekin.pobi.service.CommunityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,7 +84,7 @@ public class HomeController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/community/freeboard/updateView", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/freeboard/updatePost", method = RequestMethod.GET)
 	public String freeboardUpdateView(Locale locale, Model model) {
 		model.addAttribute("postdetail", communityService.selectPostDetail());
 		
@@ -96,10 +98,8 @@ public class HomeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/community/freeboard/update", method = RequestMethod.POST)
-	public String freeboardPostUpdate(Locale locale, Model model) {
-		communityService.updatePost();
-		
-		return "redirect:/community/freeboard/list.do";
+	public String freeboardPostUpdate(Locale locale, Model model, HttpServletRequest request) {
+		return "redirect:/community/freeboard/postview.do?post_id=" + communityService.updatePost();
 	}
 
 	

@@ -23,19 +23,17 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div id="units-container">
-			<form method="post">
+		<div id="units-container" align="right">
+			<a href="#cancle" class="label label-blue" style="font-size: 15px;"">취소</a>
+			<a href="#save" class="label label-blue" style="font-size: 15px;"">저장</a>
+			<form method="post" class="forms-inline">
 				<c:choose>
 					<c:when test="${postdetail ne null}">
 						<input type="hidden" id="prefix" value="update" />
 						<input type="hidden" name="post_id" value="${postdetail.POST_ID}"
-						<div align="left">
-							<a href="#cancle" class="label label-red" style="font-size: 12px;">취소</a>
-							<a href="#save" class="label label-red" style="font-size: 12px;">저장</a>
-						</div>
 						<div style="width: 100%;">
 							제목
-							<input type="text" name="subject" id="subject" value="${postdetail.SUBJECT}" style="width: 100%;"/>
+							<input type="text" name="subject" id="subject" value="${postdetail.SUBJECT}" style="width: 100%;" />
 						</div>
 						
 						<div>
@@ -44,9 +42,9 @@
 					</c:when>
 					<c:otherwise>
 						<input type="hidden" id="prefix" value="write" />
-						<div align="left">
-							<a href="#cancle" class="label label-red" style="font-size: 12px;">취소</a>
-							<a href="#save" class="label label-red" style="font-size: 12px;">저장</a>
+						<div id="units-container" align="right">
+							<a href="#cancle" class="label label-blue" style="font-size: 15px;"">취소</a>
+							<a href="#save" class="label label-blue" style="font-size: 15px;"">저장</a>
 						</div>
 						<div style="width: 100%;">
 							제목
@@ -59,7 +57,7 @@
 					</c:otherwise>
 				</c:choose>
 			</form>
-		</div>
+			</div>
 	</div>
 </body>
 </html>

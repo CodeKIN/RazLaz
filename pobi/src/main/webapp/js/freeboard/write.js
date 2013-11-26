@@ -1,7 +1,6 @@
 jQuery(function() {
 	(function($) {
 		var intervalId;
-		var isSetComplate = false;
 		
 		/* **************************************************
 		 * on load complete > web editor load               *
@@ -54,16 +53,22 @@ jQuery(function() {
 		 * bind Elements                                    *
 		 * **************************************************/
 		
+		$("#subject").keydown(function(){return false;});
+		
 		$("a[href='#cancle']").click(function(){
 			var voSubmitsion = Submission.createSubmission();
 
-			voSubmitsion.attr("method", "get");
-			voSubmitsion.attr("action", "/community/freeboard/list.do");
+			Common.attr(voSubmitsion, "method", "get");
+			Common.attr(voSubmitsion, "action", "/community/freeboard/list.do");
 		
 			voSubmitsion.submit();
 		});
 		
 		$("a[href='#save']").click(function(elClickedObj){
+			if(!confirm("정말로 저장하시겠습니까?")){
+				return false;
+			}
+			
 			var targetform = document.getElementsByTagName("form")[0];
 			
 		    // editor's text value copy at textarea

@@ -28,7 +28,7 @@ public class CommunityService extends CommonService{
 		int totPage      = 0;
 		int currentPage  = request.getParameter("client_page") != null ? Integer.parseInt(request.getParameter("client_page").toString()) : 1;
 		int startPageNum = currentPage % pageGrp == 0 ? (currentPage / pageGrp - 1) * pageGrp + 1 : (currentPage / pageGrp) * pageGrp + 1;
-		int endPageNum   = startPageNum + pageGrp;
+		int endPageNum   = startPageNum + pageGrp - 1;
 		int startRow     = currentPage * pageCnt - pageCnt;
 		int endRow       = pageCnt;
 		
@@ -96,7 +96,7 @@ public class CommunityService extends CommonService{
 		return communityDao.selectPostDetail(param);
 	}
 
-	public void updatePost() {
+	public String updatePost() {
 		HttpServletRequest request = this.getRequest();
 		String[] keys = {"post_id", "subject", "content"};
 		Map<String, Object> param = this.getParamMap(keys, request);
@@ -113,8 +113,6 @@ public class CommunityService extends CommonService{
 		 * checking writer and requester         *
 		 * ***************************************/
 
-		
-		
-		
+		return request.getParameter("post_id");
 	}
 }

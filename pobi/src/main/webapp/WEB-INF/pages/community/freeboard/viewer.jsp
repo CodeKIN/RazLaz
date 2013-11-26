@@ -33,7 +33,7 @@ table.width-100.table-simple.table-stroked thead tr th{
 		<div id="units-container">
 			<div id="units-container" align="right">
 				<a href="#list" class="label label-blue" style="font-size: 15px;">목록</a>
-				<a href="/community/freeboard/updateView.do?post_id=${postdetail.POST_ID}" class="label label-blue" style="font-size: 15px;">수정</a>
+				<a href="/community/freeboard/updatePost.do?post_id=${postdetail.POST_ID}" class="label label-blue" style="font-size: 15px;">수정</a>
 				<a href="#write" class="label label-blue" style="font-size: 15px;">글쓰기</a>
 			</div>
 			<table class="width-100 table-simple table-stroked">
@@ -92,7 +92,7 @@ table.width-100.table-simple.table-stroked thead tr th{
 			</table>
 			<div id="units-container" align="right">
 				<a href="#list" class="label label-blue" style="font-size: 15px;">목록</a>
-				<a href="/community/freeboard/updateView.do?post_id=${postdetail.POST_ID}" class="label label-blue" style="font-size: 15px;">수정</a>
+				<a href="/community/freeboard/updatePost.do?post_id=${postdetail.POST_ID}" class="label label-blue" style="font-size: 15px;">수정</a>
 				<a href="#write" class="label label-blue" style="font-size: 15px;">글쓰기</a>
 			</div>
 		</div>
